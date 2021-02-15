@@ -1,0 +1,56 @@
+Neural networks can approximate any convex continuous function (any func that can be continuously integrated over).
+[check out Universal Approximation Theorem on wikipedia]
+
+They r composed of the input layer, the hidden layers and an output layer. A neural network with 2 or more hidden layers is known as a deep neural network.
+
+Activation functions set boundaries to output values from the neuron.
+
+from the perceptron;
+y = x*w + b
+where x is input, w is weight and b is the bias.
+The weight is attached to the input as a measure of its importance.
+The bias b is then added to the product x*w as a threshold beyond which the product x*w can start to have a majority effect.
+
+Then overall, we pass the output y through an overall activation function to limit its value.
+
+The simplest neural networks can rely on a basic step function that outputs a zero or 1.
+The step function however, is a very strong function and very small changes will not be reflected.
+
+A more dynamic function is required to give better results. Thus the sigmoid function will work better than the step function.
+f(z) = 1/(1 + e.exp(-z))
+
+Another common activation function that can be used is the hyperbolic tangent.
+tanh(x) = sinh(x)/cosh(x)
+
+
+Multi-class activation functions
+The simplest way to organize multiple classes is to have 1 output node per class.
+
+One-hot encoding (using dummy variables) works well for mutually-exclusive classes.
+
+For non-exclusive classes, good choice of the activation function is vital. A sigmoid function works well in this case, as it allows for a single datapoint fed into a neuron to have multiple classes assigned to it.
+
+For mutually-exclusive classes, the softmax function works really well and it'll give different probabilities
+
+COST FUNCTIONS AND GRADIENT DESCENT
+Cost functions help us to know how far off our models are from accurate predictions.
+Gradient descent helps us to reduce the cost function
+
+Cost functions are aka loss/error functions.
+A common cost function is the quadratic cost function.
+
+You can think of the cost fn as a fn of 4 main things
+C(W, B, S, E)
+W - neural network's weights
+B - neural network's biases
+S - input of a single training sample
+E - desired output of training sample
+
+For classification problems, instead of using the quadratic cost function, we commonly use the cross entropy loss function, which assumes that your model predicts a probability distribution p(y=i) for each of the classes i=1, 2, ...C
+
+When we get our cost/loss values, we then go back to readjust the other earlier biases and weights through backpropagation.
+Updating the weights and biases help to reduce the cost function.
+
+We can use the gradient to go back through the network and adjust our weights and biases to minimize the output of the error vector on the last output layer.
+
+We calculate the error at the very last layer then go backwards through the network in order to calculate all those errors, and then adjusting the weights and biases accordingly, to minimize the cost function.
